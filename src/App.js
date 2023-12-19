@@ -12,7 +12,7 @@ const categoriesList = [
 
 // Replace your code here
 const App = () => {
-  const [isApiGotError, setIsApiGotError] = useState(false)
+  const [hasApiError, setHasApiError] = useState(false)
   const [projectsData, setProjectsData] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
   const [category, setCategory] = useState(categoriesList[0].id)
@@ -32,9 +32,9 @@ const App = () => {
       }))
 
       setProjectsData(updatedData)
-      if (isApiGotError) setIsApiGotError(false)
+      if (hasApiError) setHasApiError(false)
     } catch (error) {
-      setIsApiGotError(true)
+      setHasApiError(true)
     } finally {
       setIsLoading(false)
     }
@@ -89,7 +89,7 @@ const App = () => {
         </select>
 
         {isLoading && <LoadingView />}
-        {isApiGotError && <FailureView />}
+        {hasApiError && <FailureView />}
         {!isLoading && projectsData?.length !== 0 && (
           <ul className="project-list">
             {projectsData?.map(each => (
