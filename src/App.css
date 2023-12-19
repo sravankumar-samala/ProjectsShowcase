@@ -52,6 +52,7 @@ select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.2em;
+  align-self: start;
 }
 .project-item {
   border-radius: 10px;
